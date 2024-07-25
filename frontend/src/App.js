@@ -1,24 +1,29 @@
 import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+    const [showChat, setShowChat] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <h1>Welcome to Vidi</h1>
+        <button className="chat-icon" onClick={() => setShowChat(true)}>💬</button>
+        {showChat && (
+            <div className="chat-popup">
+              <div className="chat-header">
+                <h3>Chat with Us!</h3>
+                <button onClick={() => setShowChat(false)} className="close-button">✖</button>
+              </div>
+              <iframe
+                  src="http://localhost:8501"
+                  height="550"
+                  width="1000"
+                  title="Chat"
+              ></iframe>
+            </div>
+        )}
+      </div>
   );
 }
 
